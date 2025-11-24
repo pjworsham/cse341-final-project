@@ -1,12 +1,27 @@
 {
-  "name": "cse341-final-project",
+  "name": "groupproject",
   "version": "1.0.0",
   "description": "",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js",
+    "dev": "nodemon server.js",
+    "swagger": "node ./swagger.js"
   },
-  "author": "",
+  "keywords": [],
+  "author": "Pam Worsham",
+  "contributors": [
+    {
+      "name": "Keith Worsham"
+    },
+    {
+      "name": "Eric Earl Arndt"
+    },
+    {
+      "name": "Vanessa Yang"
+    }
+  ],
   "license": "ISC",
   "dependencies": {
     "body-parser": "^2.2.0",
@@ -18,9 +33,19 @@
     "mongoose": "^9.0.0",
     "passport": "^0.7.0",
     "rest": "^2.0.0",
-    "swagger": "^0.7.5",
     "swagger-autogen": "^2.23.7",
     "swagger-ui-express": "^5.0.1",
     "validatorjs": "^3.22.1"
-  }
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.11"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pjworsham/cse341-final-project.git"
+  },
+  "bugs": {
+    "url": "https://github.com/pjworsham/cse341-final-project/issues"
+  },
+  "homepage": "https://github.com/pjworsham/cse341-final-project#readme"
 }

@@ -1,0 +1,38 @@
+### Get all gifts
+GET http://localhost:3000/gifts
+
+### Get a single gift by ID
+GET http://localhost:3000/gifts/#id
+
+### Create a new gift
+POST http://localhost:3000/gifts HTTP/1.1
+Content-Type: application/json
+
+{
+    "name": "Stand Mixer",
+    "price": "279.00",
+    "department": "Houseware",
+    "brand": "Kitchenaid",
+    "quantity": "1",
+    "color": "Pink",
+    "size": "small",
+    "store": "Walmart"
+}
+
+### Update an existing gift by ID
+PUT http://localhost:3000/gifts/#id HTTP/1.1
+Content-Type: application/json
+
+{
+    "name": "Bluey Pillow Pet",
+    "price": "39.99",
+    "department": "Toys",
+    "brand": "Pillow Pet",
+    "quantity": "1",
+    "color": "Blue",
+    "size": "Small",
+    "store": ""
+}
+
+### Delete an pet by ID
+DELETE http://localhost:3000/gifts/69240c43f6f1c7355eb46d13

@@ -1,1 +1,2 @@
-# Holiday Planner Manager
+# Holiday Party Manager
+
