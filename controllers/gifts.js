@@ -94,11 +94,14 @@ const updateGift = async (req, res) => {
       .replaceOne({ _id: giftId }, gift);
 
     if (response.modifiedCount > 0) {
-      return res.status(204).send();
+      return res.status(200).json({
+        message: 'Gift was successfully updated.',
+        updatedId: req.params.id
+      });
     } else {
       return res
-        .status(500)
-        .json(response.error || 'Some error occurred while updating the gift.');
+        .status(404)
+        .json({ message: 'Gift not found or nothing was updated.' });
     }
   } catch (err) {
     console.error(err);

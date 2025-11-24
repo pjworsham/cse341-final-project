@@ -9,29 +9,29 @@ POST http://localhost:3000/gifts HTTP/1.1
 Content-Type: application/json
 
 {
-    "name": "Stand Mixer",
-    "price": "279.00",
-    "department": "Houseware",
-    "brand": "Kitchenaid",
+    "name": "Knife Set",
+    "price": "879.95",
+    "department": "Home Decore",
+    "brand": "Bali",
     "quantity": "1",
-    "color": "Pink",
-    "size": "small",
-    "store": "Walmart"
+    "color": "White",
+    "size": "Medium",
+    "store": "Home Depot"
 }
 
 ### Update an existing gift by ID
-PUT http://localhost:3000/gifts/#id HTTP/1.1
+PUT http://localhost:3000/gifts/69241248833014ec06d71dd5 HTTP/1.1
 Content-Type: application/json
 
 {
-    "name": "Bluey Pillow Pet",
-    "price": "39.99",
-    "department": "Toys",
-    "brand": "Pillow Pet",
+    "name": "Blinds",
+    "price": "92.94",
+    "department": "Home Decor",
+    "brand": "Bali",
     "quantity": "1",
-    "color": "Blue",
-    "size": "Small",
-    "store": ""
+    "color": "White",
+    "size": "Medium",
+    "store": "Home Depot"
 }
 
 ### Delete an pet by ID
