@@ -1,0 +1,97 @@
+@baseUrl = http://localhost:3000
+
+########################################
+# ROOT & SWAGGER
+########################################
+
+### Home page (HTML with links to routes)
+GET {{baseUrl}}/
+
+### Swagger UI
+GET {{baseUrl}}/api-docs
+
+
+########################################
+# GIFTS ROUTES (Vanessa’s area)
+# Some of these may 404 until fully implemented
+########################################
+
+### Get all gifts (or main gifts route)
+GET {{baseUrl}}/gifts
+
+### Gifts inventory (if implemented per proposal)
+GET {{baseUrl}}/gifts/inventory
+
+### Place a gifts order (if implemented)
+POST {{baseUrl}}/gifts/order
+Content-Type: application/json
+
+{
+  "giftId": "replace-me",
+  "participantId": "replace-me",
+  "quantity": 1
+}
+
+### Get a single gift by id (if implemented as /gifts/{giftsId})
+GET {{baseUrl}}/gifts/replace-with-gift-id
+
+### Update a gift (if implemented)
+PUT {{baseUrl}}/gifts/replace-with-gift-id
+Content-Type: application/json
+
+{
+  "name": "Updated gift name",
+  "priority": "high"
+}
+
+### Delete a gift (if implemented)
+DELETE {{baseUrl}}/gifts/replace-with-gift-id
+
+
+
+########################################
+# FOOD / DISHES ROUTES (Eric)
+########################################
+
+### Create a new dish
+POST {{baseUrl}}/food/dish
+Content-Type: application/json
+
+{
+  "name": "Flourless Chocolate Torte",
+  "categoryId": "dessert",
+  "participantId": "eric",
+  "description": "Rich, dense chocolate cake made without flour, topped with cocoa powder or ganache",
+  "serves": 10,
+  "isVegetarian": true,
+  "isGlutenFree": true
+}
+### Get all dishes
+GET {{baseUrl}}/food/dish
+
+### Get a single dish by id
+# After creating a dish, copy its _id into the URL below.
+GET {{baseUrl}}/food/dish/replace-with-dish-id
+
+### Update an existing dish
+PUT {{baseUrl}}/food/dish/replace-with-dish-id
+Content-Type: application/json
+
+{
+  "name": "Updated Potato Salad",
+  "categoryId": "side",
+  "participantId": "eric",
+  "description": "Less mayo, more mustard",
+  "serves": 8,
+  "isVegetarian": true,
+  "isGlutenFree": false
+}
+
+### Delete a dish
+DELETE {{baseUrl}}/food/dish/replace-with-dish-id
+
+### Get dishes by category
+GET {{baseUrl}}/food/dish/by-category/side
+
+### Get dishes by participant
+GET {{baseUrl}}/food/dish/by-participant/eric

@@ -1,3 +1,4 @@
+// routes/index.js
 const router = require('express').Router();
 
 /* ******************************************
@@ -6,14 +7,17 @@ const router = require('express').Router();
 router.use('/', require('./swagger'));
 
 /* ******************************************
- * Main Resource Routes -vy
+ * Main Resource Routes
  *******************************************/
+// Gifts routes (Vanessa)
 router.use('/gifts', require('./gifts'));
 
+// Food / dishes routes (Eric)
+router.use('/food', require('./food'));  // <-- uses routes/food.js
 
 
 /* ******************************************
- * Basic Home Route -vy
+ * Basic Home Route -vy -ea
  *******************************************/
 router.get('/', (req, res) => {
   res.send(`
@@ -21,6 +25,7 @@ router.get('/', (req, res) => {
     <p>Click a link below to view the different routes:</p>
     <ul>
       <li><a href="/gifts">Gifts Collection</a></li>
+      <li><a href="/food/dish">Food / Dishes Collection</a></li>
       <li><a href="/api-docs">Swagger Documentation</a></li>
     </ul>
   `);

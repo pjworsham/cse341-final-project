@@ -11,6 +11,18 @@ const doc = {
  * host: 'https://holidaypartymanager.onrender.com'
  * schemes: ['https'] -vy
  *******************************************/
+    host: 'localhost:3000',
+    schemes: ['http'],
+    tags: [
+    {
+      name: 'Gifts',
+      description: 'Endpoints for managing gifts'
+    },
+    {
+      name: 'Food',
+      description: 'Endpoints for managing dishes/food'
+    }
+  ]
     host: 'https://cse341-final-project-4au6.onrender.com',
     schemes: ['http', 'https']
 };

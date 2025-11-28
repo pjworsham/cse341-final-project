@@ -7,6 +7,16 @@
   },
   "host": "https://cse341-final-project-4au6.onrender.com",
   "basePath": "/",
+  "tags": [
+    {
+      "name": "Gifts",
+      "description": "Endpoints for managing gifts"
+    },
+    {
+      "name": "Food",
+      "description": "Endpoints for managing dishes/food"
+    }
+  ],
   "schemes": [
     "http",
     "https"
@@ -206,6 +216,250 @@
           },
           "404": {
             "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/food/dish": {
+      "post": {
+        "tags": [
+          "Food"
+        ],
+        "description": "Create a new dish for the holiday party.",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "example": "any"
+                },
+                "categoryId": {
+                  "example": "any"
+                },
+                "participantId": {
+                  "example": "any"
+                },
+                "description": {
+                  "example": "any"
+                },
+                "serves": {
+                  "example": "any"
+                },
+                "isVegetarian": {
+                  "example": "any"
+                },
+                "isGlutenFree": {
+                  "example": "any"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Dish created successfully"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "412": {
+            "description": "Validation failed (see saveDish middleware rules)"
+          },
+          "500": {
+            "description": "Server error while creating dish"
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "Food"
+        ],
+        "description": "Get all dishes for the holiday party.",
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/food/dish/{dishId}": {
+      "put": {
+        "tags": [
+          "Food"
+        ],
+        "description": "Update an existing dish by its ID.",
+        "parameters": [
+          {
+            "name": "dishId",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "MongoDB ObjectId of the dish"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string",
+                  "example": "Updated Potato Salad"
+                },
+                "categoryId": {
+                  "type": "string",
+                  "example": "side"
+                },
+                "participantId": {
+                  "type": "string",
+                  "example": "eric"
+                },
+                "description": {
+                  "type": "string",
+                  "example": "Less mayo, more mustard"
+                },
+                "serves": {
+                  "type": "number",
+                  "example": 8
+                },
+                "isVegetarian": {
+                  "type": "boolean",
+                  "example": true
+                },
+                "isGlutenFree": {
+                  "type": "boolean",
+                  "example": false
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Dish updated successfully"
+          },
+          "400": {
+            "description": "Invalid dish id"
+          },
+          "404": {
+            "description": "Dish not found"
+          },
+          "412": {
+            "description": "Validation failed (see saveDish middleware rules)"
+          },
+          "500": {
+            "description": "Server error while updating dish"
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "Food"
+        ],
+        "description": "Get a single dish by its ID.",
+        "parameters": [
+          {
+            "name": "dishId",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Food"
+        ],
+        "description": "Delete a dish by its ID.",
+        "parameters": [
+          {
+            "name": "dishId",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/food/dish/by-category/{categoryId}": {
+      "get": {
+        "tags": [
+          "Food"
+        ],
+        "description": "Get dishes filtered by categoryId (e.g., main, side, dessert).",
+        "parameters": [
+          {
+            "name": "categoryId",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/food/dish/by-participant/{participantId}": {
+      "get": {
+        "tags": [
+          "Food"
+        ],
+        "description": "Get dishes assigned to a specific participantId.",
+        "parameters": [
+          {
+            "name": "participantId",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
           },
           "500": {
             "description": "Internal Server Error"
