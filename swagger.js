@@ -7,12 +7,17 @@ const doc = {
     },
   
 /* ******************************************
- * Before deploy on Render, we need to change
- * host: 'https://holidaypartymanager.onrender.com'
- * schemes: ['https'] -vy
+ * Production URL -vy
  *******************************************/
-    host: 'localhost:3000',
-    schemes: ['http'],
+host: 'cse341-final-project-4au6.onrender.com',
+schemes: ['https'],
+
+/* ******************************************
+ * Localhost for testing-vy
+ *******************************************/
+// host: 'localhost:3000',
+// schemes: ['http'],
+
     tags: [
     {
       name: 'Gifts',
@@ -23,8 +28,6 @@ const doc = {
       description: 'Endpoints for managing dishes/food'
     }
   ]
-    host: 'https://cse341-final-project-4au6.onrender.com',
-    schemes: ['http', 'https']
 };
 
 const outputFile = './swagger.json';
