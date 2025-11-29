@@ -12,7 +12,7 @@ const doc = {
  * update the swagger.json file on render.com -vy
  *******************************************/
   host: production
-    ? 'https://cse341-final-project-4au6.onrender.com'
+    ? 'cse341-final-project-4au6.onrender.com'
     : 'localhost:3000',
     schemes: production ? ['https']: ['http' ],
     tags: [
