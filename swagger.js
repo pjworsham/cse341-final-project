@@ -8,13 +8,17 @@ const doc = {
     },
   
 /* ******************************************
- * Trying to see if this change will automatically
- * update the swagger.json file on render.com -vy
+ * Production URL -vy
  *******************************************/
-  host: production
-    ? 'https://cse341-final-project-4au6.onrender.com'
-    : 'localhost:3000',
-    schemes: production ? ['https']: ['http' ],
+host: 'cse341-final-project-4au6.onrender.com',
+schemes: ['https'],
+
+/* ******************************************
+ * Localhost for testing-vy
+ *******************************************/
+// host: 'localhost:3000',
+// schemes: ['http'],
+
     tags: [
     {
       name: 'Gifts',
