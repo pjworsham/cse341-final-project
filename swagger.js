@@ -9,8 +9,10 @@ const doc = {
 /* ******************************************
  * Production URL -vy
  *******************************************/
-host: 'cse341-final-project-4au6.onrender.com',
-schemes: ['https'],
+host: production 
+    ? 'https://cse341-final-project-4au6.onrender.com'
+    : 'locathost:3000',
+schemes: production ? ['https']: ['http'],
 
 /* ******************************************
  * Localhost for testing-vy
