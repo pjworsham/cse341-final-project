@@ -3,6 +3,7 @@ const { ObjectId } = require('mongodb');
 
 const getAllGifts = async (req, res) => {
   try {
+    /* #swagger.tags = ['Gifts'] */
     const gifts = await mongodb
       .getDb()
       .db()
@@ -18,6 +19,7 @@ const getAllGifts = async (req, res) => {
 
 const getSingleGift = async (req, res) => {
   try {
+    /* #swagger.tags = ['Gifts'] */
     if (!ObjectId.isValid(req.params.id)) {
       return res.status(400).json('Must use a valid gift id to find a gift.');
     }
@@ -34,6 +36,7 @@ const getSingleGift = async (req, res) => {
 
 const createGift = async (req, res) => {
   try {
+    /* #swagger.tags = ['Gifts'] */
     const gift = {
       name: req.body.name,
       price: req.body.price,
@@ -70,6 +73,7 @@ const createGift = async (req, res) => {
 
 const updateGift = async (req, res) => {
   try {
+    /* #swagger.tags = ['Gifts'] */
     if (!ObjectId.isValid(req.params.id)) {
       return res.status(400).json('Must use a valid gift id to update gift.');
     }
@@ -113,6 +117,7 @@ const updateGift = async (req, res) => {
 
 const deleteGift = async (req, res) => {
   try {
+    /* #swagger.tags = ['Gifts'] */
     if (!ObjectId.isValid(req.params.id)) {
       return res.status(400).json('Must use a valid gift id to delete a gift.');
     }
