@@ -9,15 +9,10 @@ const doc = {
 /* ******************************************
  * Production URL -vy
  *******************************************/
-host: 'cse341-final-project-4au6.onrender.com',
-schemes: ['https'],
-
-/* ******************************************
- * Localhost for testing-vy
- *******************************************/
-// host: 'localhost:3000',
-// schemes: ['http'],
-
+  host: production
+    ? 'cse341-final-project-4au6.onrender.com'
+    : 'localhost:3000',
+    schemes: production ? ['https']: ['http' ],
     tags: [
     {
       name: 'Gifts',
