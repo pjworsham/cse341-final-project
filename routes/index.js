@@ -20,8 +20,12 @@ router.use('/food', require('./food'));  // <-- uses routes/food.js
  * Basic Home Route -vy -ea
  *******************************************/
 router.get('/', (req, res) => {
+  const loggedIn = req.session?.user !== undefined;
+
   res.send(`
     <h1>Welcome to the Holiday Party Planner</h1>
+    <p>You are currently ${loggedIn ? `Welcome ${req.session.user.displayName}.`
+      : 'logged out'}.</p>
     <p>Click a link below to view the different routes:</p>
     <ul>
       <li><a href="/gifts">Gifts Collection</a></li>
@@ -31,10 +35,14 @@ router.get('/', (req, res) => {
   `);
 });
 
-// Take user to GitHub login to be authenticated
+/* ******************************************
+ * Route to take user to GitHub login to be authenticated -vy
+ *******************************************/
 router.get('/login', passport.authenticate('github'), (req, res) => {});
 
-// Logged out main screen
+/* ******************************************
+ * Route to log out user -vy
+ *******************************************/
 router.get('/logout', function (req, res, next) {
   req.logout(function (err) {
     if (err) { return next(err); }
