@@ -1,7 +1,7 @@
 const mongodb = require('../data/database');
 const { ObjectId } = require('mongodb');
 
-const getAllparticipants = async (req, res) => {
+const getAllParticipants = async (req, res) => {
   try {
     /* #swagger.tags = ['Participants'] */
     const participants = await mongodb
@@ -17,7 +17,7 @@ const getAllparticipants = async (req, res) => {
   }
 };
 
-const getSingleparticipants = async (req, res) => {
+const getSingleParticipants = async (req, res) => {
   try {
     /* #swagger.tags = ['participants'] */
     if (!ObjectId.isValid(req.params.id)) {
@@ -34,12 +34,12 @@ const getSingleparticipants = async (req, res) => {
   }
 };
 
-const createparticipants = async (req, res) => {
+const createParticipants = async (req, res) => {
   try {
     /* #swagger.tags = ['Participants'] */
     const participants = {
       firstName: req.body.firstName,
-      lastName: req.body.astName,
+      lastName: req.body.lastName,
       email: req.body.email,
       homeTown: req.body.homeTown,
       role: req.body.role,
@@ -82,7 +82,7 @@ const updateParticipants = async (req, res) => {
 
     const participants = {
       firstName: req.body.firstName,
-      lastName: req.body.astName,
+      lastName: req.body.lastName,
       email: req.body.email,
       homeTown: req.body.homeTown,
       role: req.body.role,
@@ -141,9 +141,9 @@ const deleteParticipants = async (req, res) => {
 };
 
 module.exports = {
-  getAllparticipants,
-  getSingleparticipants,
-  createparticipants,
+  getAllParticipants,
+  getSingleParticipants,
+  createParticipants,
   updateParticipants,
   deleteParticipants
 };
