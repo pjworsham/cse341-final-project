@@ -1,5 +1,4 @@
 const swaggerAutogen = require('swagger-autogen')();
-const production = process.env.NODE_ENV === 'production';
 
 const doc = {
     info: {
@@ -8,8 +7,7 @@ const doc = {
     },
   
 /* ******************************************
- * Trying to see if this change will automatically
- * update the swagger.json file on render.com -vy
+ * Production URL -vy
  *******************************************/
   host: production
     ? 'cse341-final-project-4au6.onrender.com'
