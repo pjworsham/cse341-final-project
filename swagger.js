@@ -1,5 +1,4 @@
 const swaggerAutogen = require('swagger-autogen')();
-const production = process.env.NODE_ENV === 'production';
 
 const doc = {
     info: {
