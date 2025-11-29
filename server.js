@@ -3,6 +3,7 @@ const express = require('express');
 const cors = require('cors');
 const session = require('express-session');
 const passport = require('passport');
+const GitHubStrategy = require('passport-github2').Strategy;
 const mongodb = require('./data/database');
 
 const app = express();
@@ -13,23 +14,75 @@ const port = process.env.PORT || 3000;
  *******************************************/
 app
   .use(express.json())
-  .use(cors({
-    origin: '*',
-    methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'],
-    allowedHeaders: [
-      'Origin',
-      'X-Requested-With',
-      'Content-Type',
-      'Accept',
-      'Z-Key',
-      'Authorization',
-    ],
+  .use(session({
+    secret: "secret",
+    resave: false,
+    saveUninitialized: true,
   }))
+  .use(passport.initialize())   
+  .use(passport.session())      
+  .use((req, res, next) => {
+    res.setHeader("Access-Control-Allow-Origin", "*");
+    res.setHeader("Access-Control-Allow-Headers",
+      "Origin, X-Requested-With, Content-Type, Accept, Z-Key, Authorization"
+    );
+    res.setHeader("Access-Control-Allow-Methods",
+      "POST, GET, PUT, PATCH, DELETE, OPTIONS"
+    );
+    next();
+  })
+  .use(cors({ methods: ['GET', 'POST', 'DELETE', 'UPDATE', 'PUT', 'PATCH'] }))
+  .use(cors({ origin: '*' }));
 
-  .use('/', require('./routes/index.js'));
 
 /* ******************************************
- * Error handler -vy
+ * OAuth Routes -vy
+ *******************************************/
+app.get('/', (req, res) => {
+  res.send(req.session.user !== undefined
+    ? `Logged in as ${req.session.user.displayName}`
+    : "Logged Out"
+  );
+});
+
+app.get('/github/callback', passport.authenticate('github', {
+  failureRedirect: '/api-docs', session: false }),
+  (req, res) => {
+    req.session.user = req.user;
+    res.redirect('/');
+  }
+);
+
+
+/* ******************************************
+ * Main App Routes -vy
+ *******************************************/
+app.use('/', require('./routes/index.js'));
+
+
+/* ******************************************
+ * Passport Config -vy
+ *******************************************/
+passport.use(new GitHubStrategy({
+    clientID: process.env.GITHUB_CLIENT_ID,
+    clientSecret: process.env.GITHUB_CLIENT_SECRET,
+    callbackURL: process.env.CALLBACK_URL
+  },
+  function (accessToken, refreshToken, profile, done) {
+    return done(null, profile);
+  }
+));
+
+passport.serializeUser((user, done) => {
+  done(null, user);
+});
+passport.deserializeUser((user, done) => {
+  done(null, user);
+});
+
+
+/* ******************************************
+ * Error Handlers & Mongo Launch
  *******************************************/
 process.on('uncaughtException', (err, origin) => {
   console.error('Caught exception:', err);
@@ -37,29 +90,20 @@ process.on('uncaughtException', (err, origin) => {
   process.exit(1);
 });
 
-
-/* ******************************************
- * 400 error Handler
- *******************************************/
 app.use((req, res) => {
-  res
-    .status(404)
-    .send(`
-      <h1>Where did it go?!</h1>
-      <p>Seems like this page doesn't exist...</p>
-      <a href="/">Go Back</a>
-    `);
+  res.status(404).send(`
+    <h1>Where did it go?!</h1>
+    <p>Seems like this page doesn't exist...</p>
+    <a href="/">Go Back</a>
+  `);
 });
 
-/* ******************************************
- * MondoDB -vy
- *******************************************/
 mongodb.initDb((err) => {
   if (err) {
     console.error(err);
   } else {
     app.listen(port, () => {
-      console.log(`Server is running on port ${port}`);
+      console.log(`Server running on port ${port}`);
     });
   }
 });

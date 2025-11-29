@@ -1,5 +1,5 @@
-// routes/index.js
 const router = require('express').Router();
+const passport = require('passport');
 
 /* ******************************************
  * Swagger API-Docs -vy
@@ -30,5 +30,17 @@ router.get('/', (req, res) => {
     </ul>
   `);
 });
+
+// Take user to GitHub login to be authenticated
+router.get('/login', passport.authenticate('github'), (req, res) => {});
+
+// Logged out main screen
+router.get('/logout', function (req, res, next) {
+  req.logout(function (err) {
+    if (err) { return next(err); }
+    res.redirect('/');
+  });
+});
+
 
 module.exports = router;
