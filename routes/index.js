@@ -15,9 +15,12 @@ router.use('/gifts', require('./gifts'));
 // Food / dishes routes (Eric)
 router.use('/food', require('./food'));  // <-- uses routes/food.js
 
+// Participants routes (Keith)
+router.use('/participants', require('./participants'));
+
 
 /* ******************************************
- * Basic Home Route -vy -ea
+ * Basic Home Route -vy -ea -kw
  *******************************************/
 router.get('/', (req, res) => {
   res.send(`
@@ -26,6 +29,7 @@ router.get('/', (req, res) => {
     <ul>
       <li><a href="/gifts">Gifts Collection</a></li>
       <li><a href="/food/dish">Food / Dishes Collection</a></li>
+      <li><a href="/participants">Participants Collection</a></li>
       <li><a href="/api-docs">Swagger Documentation</a></li>
     </ul>
   `);
