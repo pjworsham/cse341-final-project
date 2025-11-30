@@ -22,17 +22,20 @@ router.use('/food', require('./food'));  // <-- uses routes/food.js
 router.get('/', (req, res) => {
   const loggedIn = req.session?.user !== undefined;
 
-  res.send(`
+  res.send(
+    `
     <h1>Welcome to the Holiday Party Planner</h1>
-    <p>You are currently ${loggedIn ? `Welcome ${req.session.user.displayName}.`
-      : 'logged out'}.</p>
+    <p>You are currently ${loggedIn
+      ? `logged in. Welcome ${req.session.user.displayName}! <a href="/logout">Logout</a>`
+      : `logged out. <a href=/login>Login</a>`}</p>
     <p>Click a link below to view the different routes:</p>
     <ul>
       <li><a href="/gifts">Gifts Collection</a></li>
       <li><a href="/food/dish">Food / Dishes Collection</a></li>
       <li><a href="/api-docs">Swagger Documentation</a></li>
     </ul>
-  `);
+  `
+  );
 });
 
 /* ******************************************
