@@ -2,7 +2,7 @@
 const express = require('express');
 const router = express.Router();
 const dish = require('../controllers/dish.js');
-const { saveDish } = require('../middleware/validate');   // ⬅ ADD THIS
+const { saveDish } = require('../middleware/validate');
 
 /**
  * FOOD / DISHES ROUTES

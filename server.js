@@ -1,4 +1,5 @@
-require('dotenv').config();
+require('dotenv').config({ quiet: true }); // <-- Be Quiet! Turn off the useless msgs
+
 const express = require('express');
 const cors = require('cors');
 const session = require('express-session');
@@ -13,33 +14,35 @@ const port = process.env.PORT || 3000;
  *******************************************/
 app
   .use(express.json())
-  .use(cors({
-    origin: '*',
-    methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'],
-    allowedHeaders: [
-      'Origin',
-      'X-Requested-With',
-      'Content-Type',
-      'Accept',
-      'Z-Key',
-      'Authorization',
-    ],
-  }))
-
+  .use(
+    cors({
+      origin: '*',
+      methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'],
+      allowedHeaders: [
+        'Origin',
+        'X-Requested-With',
+        'Content-Type',
+        'Accept',
+        'Z-Key',
+        'Authorization',
+      ],
+    })
+  )
   .use('/', require('./routes/index.js'));
 
 /* ******************************************
  * Error handler -vy
  *******************************************/
-process.on('uncaughtException', (err, origin) => {
-  console.error('Caught exception:', err);
-  console.error('Exception origin:', origin);
-  process.exit(1);
-});
-
+if (process.env.NODE_ENV !== 'test') {
+  process.on('uncaughtException', (err, origin) => {
+    console.error('Caught exception:', err);
+    console.error('Exception origin:', origin);
+    process.exit(1);
+  });
+}
 
 /* ******************************************
- * 400 error Handler
+ * 404 error Handler
  *******************************************/
 app.use((req, res) => {
   res
@@ -52,14 +55,22 @@ app.use((req, res) => {
 });
 
 /* ******************************************
- * MondoDB -vy
+ * MongoDB init + start server
+ * (skipped when running Jest tests)
  *******************************************/
-mongodb.initDb((err) => {
-  if (err) {
-    console.error(err);
-  } else {
-    app.listen(port, () => {
-      console.log(`Server is running on port ${port}`);
-    });
-  }
-});
+if (process.env.NODE_ENV !== 'test') {
+  mongodb.initDb((err) => {
+    if (err) {
+      console.error(err);
+    } else {
+      app.listen(port, () => {
+        console.log(`Server is running on port ${port}`);
+      });
+    }
+  });
+}
+
+/* ******************************************
+ * Export app for Jest / supertest
+ *******************************************/
+module.exports = app;
