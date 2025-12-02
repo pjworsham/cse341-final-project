@@ -54,6 +54,17 @@ const saveDish = (req, res, next) => {
 };
 
 /* ******************************************
+ * Validate locations -pw
+ *******************************************/
+const saveLocations = (req, res, next) => {
+  const validationRule = {
+    name: 'required|string',
+    address: 'required|string',
+    city: 'required|string',
+    state: 'required|string',
+    zipCode: 'required|numeric',
+    capacity: 'required|string',
+    priceRange: 'required|string'
  * Validate participants -kw
  *******************************************/
 const saveParticipants = (req, res, next) => {
@@ -83,5 +94,6 @@ const saveParticipants = (req, res, next) => {
 module.exports = {
   saveGift,
   saveDish,
+  saveLocations
   saveParticipants,
 };

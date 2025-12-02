@@ -15,6 +15,8 @@ router.use('/gifts', require('./gifts'));
 // Food / dishes routes (Eric)
 router.use('/food', require('./food'));  // <-- uses routes/food.js
 
+// Locations routes (Pam)
+router.use('/locations', require('./locations'));
 // Participants routes (Keith)
 router.use('/participants', require('./participants'));
 
@@ -29,6 +31,7 @@ router.get('/', (req, res) => {
     <ul>
       <li><a href="/gifts">Gifts Collection</a></li>
       <li><a href="/food/dish">Food / Dishes Collection</a></li>
+      <li><a href="/locations">Locations Collection</a></li>
       <li><a href="/participants">Participants Collection</a></li>
       <li><a href="/api-docs">Swagger Documentation</a></li>
     </ul>

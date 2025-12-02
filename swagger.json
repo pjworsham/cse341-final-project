@@ -5,7 +5,7 @@
     "description": "A simple API to help manage holiday parties",
     "version": "1.0.0"
   },
-  "host": "cse341-final-project-4au6.onrender.com",
+  "host": "localhost:3000",
   "basePath": "/",
   "tags": [
     {
@@ -16,13 +16,16 @@
       "name": "Food",
       "description": "Endpoints for managing dishes/food"
     },
+     {
+      "name": "Locations",
+      "description": "Endpoints for managing locations"
     {
       "name": "Participants",
       "description": "Endpoints for managing participants"
     }
   ],
   "schemes": [
-    "https"
+    "http"
   ],
   "paths": {
     "/": {
@@ -485,6 +488,10 @@
         }
       }
     },
+    "/locations/": {
+      "get": {
+        "tags": [
+          "Locations"
     
     "/participants/": {
       "get": {
@@ -506,6 +513,7 @@
       },
       "post": {
         "tags": [
+          "Locations"
           "Participants"
         ],
         "description": "",
@@ -516,6 +524,25 @@
             "schema": {
               "type": "object",
               "properties": {
+                "name": {
+                  "example": "any"
+                },
+                "address": {
+                  "example": "any"
+                },
+                "city": {
+                  "example": "any"
+                },
+                "state": {
+                  "example": "any"
+                },
+                "zipCode": {
+                  "example": "any"
+                },
+                "capacity": {
+                  "example": "any"
+                },
+                "priceRange": {
                 "firstName": {
                   "example": "any"
                 },
@@ -557,6 +584,10 @@
         }
       }
     },
+    "/locations/{id}": {
+      "get": {
+        "tags": [
+          "Locations"
     "/participants/{id}": {
       "get": {
         "tags": [
@@ -591,6 +622,7 @@
       },
       "put": {
         "tags": [
+          "Locations"
           "Participants"
         ],
         "description": "",
@@ -607,6 +639,25 @@
             "schema": {
               "type": "object",
               "properties": {
+                "name": {
+                  "example": "any"
+                },
+                "address": {
+                  "example": "any"
+                },
+                "city": {
+                  "example": "any"
+                },
+                "state": {
+                  "example": "any"
+                },
+                "zipCode": {
+                  "example": "any"
+                },
+                "capacity": {
+                  "example": "any"
+                },
+                "priceRange": {
                 "firstName": {
                   "example": "any"
                 },
@@ -655,6 +706,7 @@
       },
       "delete": {
         "tags": [
+          "Locations"
           "Participants"
         ],
         "description": "",
