@@ -123,11 +123,13 @@ const updateDish = async (req, res) => {
       { returnDocument: 'after' }
     );
 
-    if (!result.value) {
+    const updatedDish = result && (result.value ?? result);
+
+    if (!updatedDish) {
       return res.status(404).json({ error: 'Dish not found' });
     }
 
-    res.json(result.value);
+    return res.json(updatedDish);
   } catch (err) {
     console.error('Error updating dish:', err);
     res.status(500).json({ error: 'Failed to update dish' });

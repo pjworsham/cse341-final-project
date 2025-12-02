@@ -19,6 +19,9 @@
      {
       "name": "Locations",
       "description": "Endpoints for managing locations"
+    {
+      "name": "Participants",
+      "description": "Endpoints for managing participants"
     }
   ],
   "schemes": [
@@ -489,6 +492,11 @@
       "get": {
         "tags": [
           "Locations"
+    
+    "/participants/": {
+      "get": {
+        "tags": [
+          "Participants"
         ],
         "description": "",
         "produces": [
@@ -506,6 +514,7 @@
       "post": {
         "tags": [
           "Locations"
+          "Participants"
         ],
         "description": "",
         "parameters": [
@@ -534,6 +543,28 @@
                   "example": "any"
                 },
                 "priceRange": {
+                "firstName": {
+                  "example": "any"
+                },
+                "lastName": {
+                  "example": "any"
+                },
+                "email": {
+                  "example": "any"
+                },
+                "homeTown": {
+                  "example": "any"
+                },
+                "role": {
+                  "example": "any"
+                },
+                "favoriteTreat": {
+                  "example": "any"
+                },
+                "rsvpStatus": {
+                  "example": "any"
+                },
+                "giftPreference": {
                   "example": "any"
                 }
               }
@@ -557,6 +588,10 @@
       "get": {
         "tags": [
           "Locations"
+    "/participants/{id}": {
+      "get": {
+        "tags": [
+          "Participants"
         ],
         "description": "",
         "produces": [
@@ -588,6 +623,7 @@
       "put": {
         "tags": [
           "Locations"
+          "Participants"
         ],
         "description": "",
         "parameters": [
@@ -622,6 +658,28 @@
                   "example": "any"
                 },
                 "priceRange": {
+                "firstName": {
+                  "example": "any"
+                },
+                "lastName": {
+                  "example": "any"
+                },
+                "email": {
+                  "example": "any"
+                },
+                "homeTown": {
+                  "example": "any"
+                },
+                "role": {
+                  "example": "any"
+                },
+                "favoriteTreat": {
+                  "example": "any"
+                },
+                "rsvpStatus": {
+                  "example": "any"
+                },
+                "giftPreference": {
                   "example": "any"
                 }
               }
@@ -649,6 +707,7 @@
       "delete": {
         "tags": [
           "Locations"
+          "Participants"
         ],
         "description": "",
         "parameters": [

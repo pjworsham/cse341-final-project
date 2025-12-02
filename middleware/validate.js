@@ -65,6 +65,18 @@ const saveLocations = (req, res, next) => {
     zipCode: 'required|numeric',
     capacity: 'required|string',
     priceRange: 'required|string'
+ * Validate participants -kw
+ *******************************************/
+const saveParticipants = (req, res, next) => {
+  const validationRule = {
+    firstName: 'required|string',
+    lastName: 'required|string',
+    email: 'required|string',
+    homeTown: 'string',
+    role: 'string',
+    favoriteTreat: 'string',
+    rsvpStatus: 'required|string',
+    giftPreference: 'required|string'
   };
 
   validator(req.body, validationRule, {}, (err, status) => {
@@ -83,4 +95,5 @@ module.exports = {
   saveGift,
   saveDish,
   saveLocations
+  saveParticipants,
 };
