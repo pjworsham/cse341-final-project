@@ -92,12 +92,19 @@ app.use((req, res) => {
   `);
 });
 
-mongodb.initDb((err) => {
-  if (err) {
-    console.error(err);
-  } else {
-    app.listen(port, () => {
-      console.log(`Server running on port ${port}`);
-    });
-  }
-});
+// Only start the server (and connect to DB) if NOT running tests
+if (process.env.NODE_ENV !== 'test') {
+  mongodb.initDb((err) => {
+    if (err) {
+      console.error(err);
+    } else {
+      app.listen(port, () => {
+        console.log(`Server running on port ${port}`);
+      });
+    }
+  });
+}
+
+// Export the app for testing (Supertest)
+module.exports = app;
+
