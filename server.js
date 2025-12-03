@@ -92,7 +92,9 @@ app.use((req, res) => {
   `);
 });
 
-// Only start the server (and connect to DB) if NOT running tests
+/* ******************************************
+ * Start server only if not testing -eric
+ *******************************************/
 if (process.env.NODE_ENV !== 'test') {
   mongodb.initDb((err) => {
     if (err) {
@@ -107,4 +109,3 @@ if (process.env.NODE_ENV !== 'test') {
 
 // Export the app for testing (Supertest)
 module.exports = app;
-
