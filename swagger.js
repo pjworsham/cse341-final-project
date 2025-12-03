@@ -25,6 +25,14 @@ const doc = {
     {
       name: 'Food',
       description: 'Endpoints for managing dishes/food'
+    },
+    {
+      name: 'Locations',
+      description: 'Endpoints for managing locations'
+    },
+    {
+      name: 'Participants',
+      description: 'Endpoints for managing participants'
     }
   ]
 };
