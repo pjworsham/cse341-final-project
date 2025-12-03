@@ -53,7 +53,62 @@ const saveDish = (req, res, next) => {
   });
 };
 
+/* ******************************************
+ * Validate locations -pw
+ *******************************************/
+const saveLocations = (req, res, next) => {
+  const validationRule = {
+    name: 'required|string',
+    address: 'required|string',
+    city: 'required|string',
+    state: 'required|string',
+    zipCode: 'required|numeric',
+    capacity: 'required|string',
+    priceRange: 'required|string'
+  };
+
+  validator(req.body, validationRule, {}, (err, status) => {
+    if (!status) {
+      return res.status(412).send({
+        success: false,
+        message: 'Validation failed',
+        data: err
+      });
+    }
+    next();
+  });
+};
+
+/* ******************************************
+ * Validate participants -kw
+ *******************************************/
+const saveParticipants = (req, res, next) => {
+  const validationRule = {
+    firstName: 'required|string',
+    lastName: 'required|string',
+    email: 'required|string',
+    homeTown: 'string',
+    role: 'string',
+    favoriteTreat: 'string',
+    rsvpStatus: 'required|string',
+    giftPreference: 'required|string'
+  };
+
+  validator(req.body, validationRule, {}, (err, status) => {
+    if (!status) {
+      return res.status(412).send({
+        success: false,
+        message: 'Validation failed',
+        data: err
+      });
+    }
+    next();
+  });
+};
+
 module.exports = {
   saveGift,
   saveDish,
+  saveLocations,
+  saveParticipants
 };
