@@ -15,13 +15,6 @@
     {
       "name": "Food",
       "description": "Endpoints for managing dishes/food"
-    },
-     {
-      "name": "Locations",
-      "description": "Endpoints for managing locations"
-    {
-      "name": "Participants",
-      "description": "Endpoints for managing participants"
     }
   ],
   "schemes": [
@@ -492,11 +485,6 @@
       "get": {
         "tags": [
           "Locations"
-    
-    "/participants/": {
-      "get": {
-        "tags": [
-          "Participants"
         ],
         "description": "",
         "produces": [
@@ -514,7 +502,6 @@
       "post": {
         "tags": [
           "Locations"
-          "Participants"
         ],
         "description": "",
         "parameters": [
@@ -543,6 +530,177 @@
                   "example": "any"
                 },
                 "priceRange": {
+                  "example": "any"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created"
+          },
+          "412": {
+            "description": "Precondition Failed"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/locations/{id}": {
+      "get": {
+        "tags": [
+          "Locations"
+        ],
+        "description": "",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Locations"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "example": "any"
+                },
+                "address": {
+                  "example": "any"
+                },
+                "city": {
+                  "example": "any"
+                },
+                "state": {
+                  "example": "any"
+                },
+                "zipCode": {
+                  "example": "any"
+                },
+                "capacity": {
+                  "example": "any"
+                },
+                "priceRange": {
+                  "example": "any"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "412": {
+            "description": "Precondition Failed"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Locations"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/participants/": {
+      "get": {
+        "tags": [
+          "Participants"
+        ],
+        "description": "",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Participants"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
                 "firstName": {
                   "example": "any"
                 },
@@ -584,14 +742,10 @@
         }
       }
     },
-    "/locations/{id}": {
-      "get": {
-        "tags": [
-          "Locations"
     "/participants/{id}": {
       "get": {
         "tags": [
-          "Participants"
+          "participants"
         ],
         "description": "",
         "produces": [
@@ -622,7 +776,6 @@
       },
       "put": {
         "tags": [
-          "Locations"
           "Participants"
         ],
         "description": "",
@@ -639,25 +792,6 @@
             "schema": {
               "type": "object",
               "properties": {
-                "name": {
-                  "example": "any"
-                },
-                "address": {
-                  "example": "any"
-                },
-                "city": {
-                  "example": "any"
-                },
-                "state": {
-                  "example": "any"
-                },
-                "zipCode": {
-                  "example": "any"
-                },
-                "capacity": {
-                  "example": "any"
-                },
-                "priceRange": {
                 "firstName": {
                   "example": "any"
                 },
@@ -706,7 +840,6 @@
       },
       "delete": {
         "tags": [
-          "Locations"
           "Participants"
         ],
         "description": "",
