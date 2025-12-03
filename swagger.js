@@ -17,7 +17,13 @@ const doc = {
  *******************************************/
   host: 'cse341-final-project-4au6.onrender.com',
   schemes: ['https'],
-  tags: [
+    
+/* ******************************************
+ * Testing URL -vy
+ *******************************************/
+  // host: 'localhost:3000',
+  // schemes: ['http' ],
+    tags: [
     {
       name: 'Gifts',
       description: 'Endpoints for managing gifts'
@@ -25,6 +31,14 @@ const doc = {
     {
       name: 'Food',
       description: 'Endpoints for managing dishes/food'
+    },
+    {
+      name: 'Locations',
+      description: 'Endpoints for managing locations'
+    },
+    {
+      name: 'Participants',
+      description: 'Endpoints for managing participants'
     }
   ]
 };
