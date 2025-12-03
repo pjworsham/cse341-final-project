@@ -1,4 +1,5 @@
-require('dotenv').config();
+require('dotenv').config({ quiet: true }); // <-- Be Quiet! Turn off the useless msgs
+
 const express = require('express');
 const cors = require('cors');
 const session = require('express-session');
