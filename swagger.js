@@ -18,12 +18,7 @@ const doc = {
   host: 'cse341-final-project-4au6.onrender.com',
   schemes: ['https'],
     
-/* ******************************************
- * Testing URL -vy
- *******************************************/
-  // host: 'localhost:3000',
-  // schemes: ['http' ],
-    tags: [
+  tags: [
     {
       name: 'Gifts',
       description: 'Endpoints for managing gifts'
