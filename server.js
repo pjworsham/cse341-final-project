@@ -92,12 +92,19 @@ app.use((req, res) => {
   `);
 });
 
-mongodb.initDb((err) => {
-  if (err) {
-    console.error(err);
-  } else {
-    app.listen(port, () => {
-      console.log(`Server running on port ${port}`);
-    });
-  }
-});
+/* ******************************************
+ * Start server only if not testing -eric
+ *******************************************/
+if (process.env.NODE_ENV !== "test") {
+  mongodb.initDb((err) => {
+    if (err) {
+      console.error(err);
+    } else {
+      app.listen(port, () => {
+        console.log(`Server running on port ${port}`);
+      });
+    }
+  });
+}
+
+module.exports = app;
