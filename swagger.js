@@ -1,5 +1,4 @@
 const swaggerAutogen = require('swagger-autogen')();
-const production = process.env.NODE_ENV === 'production';
 
 const doc = {
     info: {
@@ -10,10 +9,14 @@ const doc = {
 /* ******************************************
  * Production URL -vy
  *******************************************/
-  host: production
-    ? 'cse341-final-project-4au6.onrender.com'
-    : 'localhost:3000',
-    schemes: production ? ['https']: ['http' ],
+  host: 'cse341-final-project-4au6.onrender.com',
+  schemes: ['https'],
+    
+/* ******************************************
+ * Testing URL -vy
+ *******************************************/
+  // host: 'localhost:3000',
+  // schemes: ['http' ],
     tags: [
     {
       name: 'Gifts',
