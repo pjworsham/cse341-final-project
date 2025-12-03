@@ -1,20 +1,28 @@
 const swaggerAutogen = require('swagger-autogen')();
-const production = process.env.NODE_ENV === 'production';
 
 const doc = {
-    info: {
-        title: 'Holiday Party Manager',
-        description: 'A simple API to help manage holiday parties'
-    },
+  info: {
+    title: 'Holiday Party Manager',
+    description: 'A simple API to help manage holiday parties'
+  },
   
 /* ******************************************
- * Trying to see if this change will automatically
- * update the swagger.json file on render.com -vy
+ * Local Testing URL -vy
  *******************************************/
-  host: production
-    ? 'cse341-final-project-4au6.onrender.com'
-    : 'localhost:3000',
-    schemes: production ? ['https']: ['http' ],
+  // host: 'localhost:3000',
+  // schemes: ['http'],
+
+/* ******************************************
+ * Production URL -vy
+ *******************************************/
+  host: 'cse341-final-project-4au6.onrender.com',
+  schemes: ['https'],
+    
+/* ******************************************
+ * Testing URL -vy
+ *******************************************/
+  // host: 'localhost:3000',
+  // schemes: ['http' ],
     tags: [
     {
       name: 'Gifts',
@@ -23,6 +31,14 @@ const doc = {
     {
       name: 'Food',
       description: 'Endpoints for managing dishes/food'
+    },
+    {
+      name: 'Locations',
+      description: 'Endpoints for managing locations'
+    },
+    {
+      name: 'Participants',
+      description: 'Endpoints for managing participants'
     }
   ]
 };

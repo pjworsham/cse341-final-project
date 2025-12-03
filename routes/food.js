@@ -2,7 +2,8 @@
 const express = require('express');
 const router = express.Router();
 const dish = require('../controllers/dish.js');
-const { saveDish } = require('../middleware/validate');
+const { saveDish } = require('../middleware/validate');   // ⬅ ADD THIS
+const { isAuthenticated } = require('../middleware/authenticate'); 
 
 /**
  * FOOD / DISHES ROUTES
@@ -18,10 +19,10 @@ const { saveDish } = require('../middleware/validate');
  */
 
 // Create a new dish
-router.post('/dish', saveDish, dish.createDish);
+router.post('/dish', isAuthenticated, saveDish, dish.createDish);
 
 // Update an existing dish
-router.put('/dish/:dishId', saveDish, dish.updateDish);
+router.put('/dish/:dishId', isAuthenticated, saveDish, dish.updateDish);
 
 // Get all dishes
 router.get('/dish', dish.getAllDishes);
@@ -38,6 +39,6 @@ router.get('/dish/by-participant/:participantId', dish.getDishesByParticipant);
 router.get('/dish/:dishId', dish.getDishById);
 
 // Delete a dish
-router.delete('/dish/:dishId', dish.deleteDish);
+router.delete('/dish/:dishId', isAuthenticated, dish.deleteDish);
 
 module.exports = router;
