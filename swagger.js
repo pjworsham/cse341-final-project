@@ -9,14 +9,14 @@ const doc = {
 /* ******************************************
  * Local Testing URL -vy
  *******************************************/
-  host: 'localhost:3000',
-  schemes: ['http'],
+  // host: 'localhost:3000',
+  // schemes: ['http'],
 
 /* ******************************************
  * Production URL -vy
  *******************************************/
-  // host: 'cse341-final-project-4au6.onrender.com',
-  // schemes: ['https'],
+  host: 'cse341-final-project-4au6.onrender.com',
+  schemes: ['https'],
   tags: [
     {
       name: 'Gifts',
