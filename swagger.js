@@ -1,11 +1,17 @@
 const swaggerAutogen = require('swagger-autogen')();
 
 const doc = {
-    info: {
-        title: 'Holiday Party Manager',
-        description: 'A simple API to help manage holiday parties'
-    },
+  info: {
+    title: 'Holiday Party Manager',
+    description: 'A simple API to help manage holiday parties'
+  },
   
+/* ******************************************
+ * Local Testing URL -vy
+ *******************************************/
+  // host: 'localhost:3000',
+  // schemes: ['http'],
+
 /* ******************************************
  * Production URL -vy
  *******************************************/
