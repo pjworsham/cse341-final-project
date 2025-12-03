@@ -745,7 +745,7 @@
     "/participants/{id}": {
       "get": {
         "tags": [
-          "participants"
+          "Participants"
         ],
         "description": "",
         "produces": [
