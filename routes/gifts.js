@@ -1,8 +1,6 @@
 const express = require('express');
 const router = express.Router();
-
 const giftsController = require('../controllers/gifts');
-
 const {isAuthenticated} = require('../middleware/authenticate');
 const validation = require('../middleware/validate');
 
