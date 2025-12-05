@@ -28,7 +28,7 @@ describe('Partaicipants GET endpoints - both getAll and getSingle', () => {
 
     expect(res.status).toHaveBeenCalledWith(400);
     expect(res.json).toHaveBeenCalledWith(
-      'Must use a valid participants id to find a participant.'
+      'Must use a valid participants id to find a participants.'
     );
   });
 
