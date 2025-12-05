@@ -62,8 +62,8 @@ const saveLocations = (req, res, next) => {
     address: 'required|string',
     city: 'required|string',
     state: 'required|string',
-    zipCode: 'required|numeric',
-    capacity: 'required|string',
+    zipCode: 'required|string',
+    capacity: 'required|numeric',
     priceRange: 'required|string'
   };
 
