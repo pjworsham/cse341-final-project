@@ -19,7 +19,7 @@ const getAllParticipants = async (req, res) => {
 
 const getSingleParticipants = async (req, res) => {
   try {
-    /* #swagger.tags = ['participants'] */
+    /* #swagger.tags = ['Participants'] */
     if (!ObjectId.isValid(req.params.id)) {
       return res.status(400).json('Must use a valid participants id to find a participants.');
     }
